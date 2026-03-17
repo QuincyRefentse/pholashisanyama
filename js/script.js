@@ -73,14 +73,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Menu data from menu.jpg
+    // Menu data from menu.jpg mapped to actual image files
     const menuItems = [
-        { name: "Prime Rib + 3 Veggies & Gravy", price: "R50", description: "Tender prime rib with our signature gravy" },
-        { name: "Chicken Meal + 3 Veggies & Gravy", price: "R47", description: "Juicy grilled chicken, perfectly spiced" },
-        { name: "Beef Stew Meal + 3 Veggies & Gravy", price: "R45", description: "Slow-cooked beef stew, rich and hearty" },
-        { name: "Wors Meat + 3 Veggies & Gravy", price: "R35", description: "Traditional South African boerewors" },
-        { name: "Hamburger + 3 Veggies & Gravy", price: "R40", description: "Hand-formed beef patty with all the trimmings" },
-        { name: "Polo Shrimp Niyama Meal", price: "R47", description: "Specialty chicken & shrimp combo" }
+        { name: "Prime Rib + 3 Veggies & Gravy", price: "R50", description: "Tender prime rib with our signature gravy", image: "images/menu/rips.png" },
+        { name: "Beef Stew Meal + 3 Veggies & Gravy", price: "R45", description: "Slow-cooked beef stew, rich and hearty", image: "images/menu/beefstew.png" },
+        { name: "Wors Meat + 3 Veggies & Gravy", price: "R35", description: "Traditional South African boerewors", image: "images/menu/voers.jpg" },
+        // I swapped the below items to match the images you actually have in your folder, 
+        // but you can change the text back if you prefer!
+        { name: "Braai Plate + 3 Veggies", price: "R60", description: "Premium mixed grill for the ultimate braai experience", image: "images/menu/braais.jpg" },
+        { name: "Mixed Meat Combo", price: "R55", description: "A delicious variety of our best cuts", image: "images/menu/mix.jpg" },
+        { name: "Biltong Stew + 3 Veggies", price: "R50", description: "Authentic African biltong stew", image: "images/menu/african-biltong-stew.jpg" }
     ];
 
     // Populate featured items on homepage
@@ -90,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const featured = menuItems.slice(0, 3);
         featuredGrid.innerHTML = featured.map(item => `
             <div class="menu-item" data-aos="fade-up">
-                <div class="menu-item-image" style="background: linear-gradient(45deg, #930045, #b80b5a);"></div>
+                <div class="menu-item-image" style="background-image: url('${item.image}'); background-size: cover; background-position: center;"></div>
                 <div class="menu-item-content">
                     <h3>${item.name}</h3>
                     <p class="item-description" style="color: #666; margin-bottom: 10px;">${item.description}</p>
@@ -166,17 +168,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Food items from your menu (with placeholder images)
         // You can replace these with your actual food items
+        // Food items from your menu mapped to the actual image files in images/menu/
         const foodItems = [
-            { name: "Prime Rib", price: "R50", image: "images/prime-rib.jpg" },
-            { name: "Chicken", price: "R47", image: "images/chicken.jpg" },
-            { name: "Beef Stew", price: "R45", image: "images/beef-stew.jpg" },
-            { name: "Wors Meat", price: "R35", image: "images/wors.jpg" },
-            { name: "Hamburger", price: "R40", image: "images/burger.jpg" },
-            { name: "Shrimp", price: "R47", image: "images/shrimp.jpg" },
-            { name: "Polo", price: "R47", image: "images/polo.jpg" },
-            { name: "Rib Eye", price: "R55", image: "images/rib-eye.jpg" },
-            { name: "Lamb Chops", price: "R60", image: "images/lamb.jpg" },
-            { name: "Sausage", price: "R30", image: "images/sausage.jpg" }
+            { name: "Prime Ribs", price: "R50", image: "images/menu/rips.png" },
+            { name: "Beef Portion", price: "R47", image: "images/menu/beef.png" },
+            { name: "Beef Stew", price: "R45", image: "images/menu/beefstew.png" },
+            { name: "Wors Meat", price: "R35", image: "images/menu/voers.jpg" },
+            { name: "Braai Plate", price: "R60", image: "images/menu/braais.jpg" },
+            { name: "Mixed Meat", price: "R55", image: "images/menu/mix.jpg" },
+            { name: "Liver Meal", price: "R35", image: "images/menu/liver.jpg" },
+            { name: "Veg Platter", price: "R30", image: "images/menu/platveg.jpg" },
+            { name: "Biltong Stew", price: "R50", image: "images/menu/african-biltong-stew.jpg" },
+            { name: "Samp Portion", price: "R20", image: "images/menu/samp.jpg" }
         ];
         
         // Create food items HTML
@@ -297,5 +300,136 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ===== SHOPPING CART LOGIC =====
+    let cart = [];
+    const WHATSAPP_NUMBER = "27123456789"; // Replace with your actual number!
+
+    const cartBtn = document.getElementById('cartBtn');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const closeCartBtn = document.getElementById('closeCartBtn');
+    const cartItemsContainer = document.getElementById('cartItems');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotalValue = document.getElementById('cartTotalValue');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    // Open/Close Cart
+    if(cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            cartDrawer.classList.add('active');
+            cartOverlay.classList.add('active');
+        });
+    }
+
+    if(closeCartBtn && cartOverlay) {
+        const closeCart = () => {
+            cartDrawer.classList.remove('active');
+            cartOverlay.classList.remove('active');
+        };
+        closeCartBtn.addEventListener('click', closeCart);
+        cartOverlay.addEventListener('click', closeCart);
+    }
+
+    // Add items to cart
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const name = this.getAttribute('data-name');
+            const price = parseInt(this.getAttribute('data-price'));
+
+            // Check if item already exists in cart
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+
+            updateCartUI();
+
+            // Success Animation on Button
+            const originalText = this.innerHTML;
+            this.innerHTML = 'Added! <i class="fas fa-check"></i>';
+            this.style.backgroundColor = "var(--magenta)";
+            this.style.color = "var(--white)";
+            
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.style.backgroundColor = "transparent";
+                this.style.color = "var(--magenta)";
+            }, 1000);
+
+            // Pop animation on cart icon
+            cartCount.classList.add('pop');
+            setTimeout(() => cartCount.classList.remove('pop'), 300);
+        });
+    });
+
+    // Update Cart Display
+    function updateCartUI() {
+        if (!cartItemsContainer) return;
+        
+        cartItemsContainer.innerHTML = '';
+        let total = 0;
+        let totalItems = 0;
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<div class="empty-cart-msg">Your cart is empty. Add some delicious meals!</div>';
+        } else {
+            cart.forEach((item, index) => {
+                total += item.price * item.quantity;
+                totalItems += item.quantity;
+
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <span class="cart-item-price">R${item.price}</span>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        cartCount.innerText = totalItems;
+        cartTotalValue.innerText = `R${total}`;
+    }
+
+    // Change Quantity Function (Needs to be global)
+    window.changeQty = function(index, change) {
+        cart[index].quantity += change;
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1); // Remove item if quantity goes to 0
+        }
+        updateCartUI();
+    };
+
+    // Process Checkout
+    if(checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Please add some items to your order first!");
+                return;
+            }
+
+            let message = "Hi Phola Shisa Nyama, I'd like to place an order:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                message += `▪ ${item.quantity}x ${item.name} (R${item.price * item.quantity})\n`;
+                total += item.price * item.quantity;
+            });
+
+            message += `\n*Total: R${total}*`;
+            message += `\n\nIs it available for collection?`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        });
+    }
     console.log('Phola Shisa Nyama website loaded successfully!');
 });

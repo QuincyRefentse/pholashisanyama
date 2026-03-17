@@ -14,16 +14,32 @@
             <div class="logo">
                 <img src="images/images-removebg-preview.png" alt="Phola Shisa Nyama Logo">
             </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="menu.html" class="active">Our Menu</a></li>
-                <li><a href="index.html#experience">The Experience</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html" class="active">Our Menu</a></li>
+                    <li><a href="index.html#experience">The Experience</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li class="mobile-order-btn">
+                        <a href="https://wa.me/27123456789?text=Hi%20Phola%20Shisa%20Nyama,%20I'd%20like%20to%20place%20an%20order!" target="_blank">Order Now <i class="fab fa-whatsapp"></i></a>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="tel:0123456789" class="btn-nav-call"><i class="fas fa-phone-alt"></i> <span>012 345 6789</span></a>
+                    <a href="https://wa.me/27123456789?text=Hi%20Phola%20Shisa%20Nyama,%20I'd%20like%20to%20place%20an%20order!" target="_blank" class="btn-nav-order">Order Now <i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="mobile-controls">
+                <a href="https://wa.me/27123456789?text=Hi%20Phola%20Shisa%20Nyama,%20I'd%20like%20to%20place%20an%20order!" target="_blank" class="btn-mobile-order">
+                    <i class="fab fa-whatsapp"></i> Order
+                </a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </nav>
     </header>
@@ -38,59 +54,107 @@
     <section class="full-menu" style="padding: 80px 0;">
         <div class="container">
             <div class="menu-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                
                 <div class="menu-item">
-                    <div class="menu-item-image" style="background: linear-gradient(45deg, #930045, #b80b5a); height: 200px;"></div>
+                    <div class="menu-item-image" style="background-image: url('images/menu/rips.png'); background-size: cover; background-position: center; height: 200px;"></div>
                     <div class="menu-item-content" style="padding: 20px;">
-                        <h3>Prime Rib + 3 Veggies & Gravy</h3>
-                        <p style="color: #666; margin: 10px 0;">Tender prime rib with our signature gravy</p>
+                        <h3>Prime Ribs + 3 Veggies</h3>
+                        <p style="color: #666; margin: 10px 0;">Tender prime ribs with our signature gravy</p>
                         <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R50</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Prime Ribs + 3 Veggies" data-price="50" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
-                
+
                 <div class="menu-item">
-                    <div class="menu-item-image" style="background: linear-gradient(45deg, #b80b5a, #930045); height: 200px;"></div>
+                    <div class="menu-item-image" style="background-image: url('images/menu/beef.png'); background-size: cover; background-position: center; height: 200px;"></div>
                     <div class="menu-item-content" style="padding: 20px;">
-                        <h3>Chicken Meal + 3 Veggies & Gravy</h3>
-                        <p style="color: #666; margin: 10px 0;">Juicy grilled chicken, perfectly spiced</p>
+                        <h3>Beef Portion + 3 Veggies</h3>
+                        <p style="color: #666; margin: 10px 0;">Perfectly grilled beef cut</p>
                         <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R47</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Beef Portion + 3 Veggies" data-price="47" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
-                    <div class="menu-item-image" style="background: linear-gradient(45deg, #930045, #ff8f00); height: 200px;"></div>
+                    <div class="menu-item-image" style="background-image: url('images/menu/mix.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
                     <div class="menu-item-content" style="padding: 20px;">
-                        <h3>Beef Stew Meal + 3 Veggies & Gravy</h3>
+                        <h3>Mixed Meat + 3 Veggies</h3>
+                        <p style="color: #666; margin: 10px 0;">A delicious variety of our best cuts</p>
+                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R55</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Mixed Meat + 3 Veggies" data-price="55" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/menu/beefstew.png'); background-size: cover; background-position: center; height: 200px;"></div>
+                    <div class="menu-item-content" style="padding: 20px;">
+                        <h3>Beef Stew Meal</h3>
                         <p style="color: #666; margin: 10px 0;">Slow-cooked beef stew, rich and hearty</p>
                         <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R45</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Beef Stew Meal" data-price="45" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
-                    <div class="menu-item-image" style="background: linear-gradient(45deg, #b80b5a, #ff8f00); height: 200px;"></div>
+                    <div class="menu-item-image" style="background-image: url('images/menu/voers.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
                     <div class="menu-item-content" style="padding: 20px;">
-                        <h3>Wors Meat + 3 Veggies & Gravy</h3>
+                        <h3>Wors Meat + 3 Veggies</h3>
                         <p style="color: #666; margin: 10px 0;">Traditional South African boerewors</p>
                         <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R35</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Wors Meat + 3 Veggies" data-price="35" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
-                    <div class="menu-item-image" style="background: linear-gradient(45deg, #930045, #d32f2f); height: 200px;"></div>
+                    <div class="menu-item-image" style="background-image: url('images/menu/braais.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
                     <div class="menu-item-content" style="padding: 20px;">
-                        <h3>Hamburger + 3 Veggies & Gravy</h3>
-                        <p style="color: #666; margin: 10px 0;">Hand-formed beef patty with all the trimmings</p>
-                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R40</div>
+                        <h3>Braai Plate</h3>
+                        <p style="color: #666; margin: 10px 0;">Premium mixed grill for the ultimate braai experience</p>
+                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R60</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Braai Plate" data-price="60" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
                 
                 <div class="menu-item">
-                    <div class="menu-item-image" style="background: linear-gradient(45deg, #b80b5a, #d32f2f); height: 200px;"></div>
+                    <div class="menu-item-image" style="background-image: url('images/menu/african-biltong-stew.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
                     <div class="menu-item-content" style="padding: 20px;">
-                        <h3>Polo Shrimp Niyama Meal</h3>
-                        <p style="color: #666; margin: 10px 0;">Specialty chicken & shrimp combo</p>
-                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R47</div>
+                        <h3>Biltong Stew Meal</h3>
+                        <p style="color: #666; margin: 10px 0;">Authentic African biltong stew with traditional sides</p>
+                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R50</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Biltong Stew Meal" data-price="50" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/menu/liver.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
+                    <div class="menu-item-content" style="padding: 20px;">
+                        <h3>Liver Meal + 3 Veggies</h3>
+                        <p style="color: #666; margin: 10px 0;">Rich and flavorful liver cooked to perfection</p>
+                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R35</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Liver Meal + 3 Veggies" data-price="35" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/menu/platveg.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
+                    <div class="menu-item-content" style="padding: 20px;">
+                        <h3>Fresh Veg Platter</h3>
+                        <p style="color: #666; margin: 10px 0;">Generous portions of our seasonal daily vegetables</p>
+                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R30</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Fresh Veg Platter" data-price="30" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-image" style="background-image: url('images/menu/samp.jpg'); background-size: cover; background-position: center; height: 200px;"></div>
+                    <div class="menu-item-content" style="padding: 20px;">
+                        <h3>Samp Portion</h3>
+                        <p style="color: #666; margin: 10px 0;">Traditional comforting samp</p>
+                        <div class="price" style="font-size: 2rem; color: #930045; font-weight: 800;">R20</div>
+                        <button class="btn btn-outline add-to-cart-btn" data-name="Samp Portion" data-price="20" style="width: 100%; margin: 15px 0 0 0; border-color: var(--magenta); color: var(--magenta);">Add to Order <i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
             </div>
             
             <div class="special-deal" style="background: linear-gradient(135deg, #930045, #b80b5a); padding: 60px; border-radius: 20px; text-align: center; margin-top: 60px;">
@@ -111,6 +175,32 @@
             </div>
         </div>
     </footer>
+
+    <div class="floating-cart" id="cartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Your Order</h2>
+            <button class="close-cart" id="closeCartBtn"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart-msg">Your cart is empty. Add some delicious meals!</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotalValue">R0</span>
+            </div>
+            <button class="btn btn-primary checkout-btn" id="checkoutBtn" style="width: 100%; margin: 0;">
+                Order via WhatsApp <i class="fab fa-whatsapp"></i>
+            </button>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
